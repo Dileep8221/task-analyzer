@@ -9,58 +9,74 @@
   <img src="https://img.shields.io/badge/Status-Completed-success"/>
   <img src="https://img.shields.io/badge/License-MIT-lightgrey"/>
 </p>
+🚀 Overview
 
----
 
-## 🚀 Overview
 
-Smart Task Analyzer is a full-stack application that helps users prioritize tasks using a balanced scoring algorithm.  
-It evaluates each task based on urgency, importance, effort, and dependencies — and ranks them using different scoring strategies.
+
+Smart Task Analyzer is a full-stack application that helps users prioritize tasks using a balanced scoring algorithm.
+It considers urgency, importance, effort, and task dependencies while offering multiple strategies for ranking.
 
 This project was built as part of a Software Development Intern technical assessment.
 
----
+✨ Features
+🔹 Core Functionality
 
-## ✨ Features
+Add tasks one-by-one or via bulk JSON
 
-### 🔹 Core Functionality
-- Add tasks individually or via bulk JSON  
-- Weighted scoring based on:
-  - Urgency (deadline proximity)
-  - Importance (1–10 scale)
-  - Effort (estimated hours)
-  - Dependencies (priority boost for tasks that unblock others)
-- Multiple strategies:
-  - **Smart Balance**
-  - **Fastest Wins**
-  - **High Impact**
-  - **Deadline Driven**
-- Explanations for every score  
-- Circular dependency detection  
-- Responsive frontend (HTML + CSS + JS)
+Weighted scoring system using:
 
----
+Urgency (deadlines)
 
-### 🌟 Bonus Features
-#### 📊 Date Intelligence Summary
-- Overdue tasks  
-- Due today  
-- Upcoming tasks  
+Importance (1–10 scale)
 
-#### 🔗 Dependency Graph Visualization
-- Reverse dependency mapping (tasks unblocked by others)
+Effort (estimated hours)
 
-#### 🟦 Eisenhower Matrix
-- Do First  
-- Quick Wins  
-- Schedule  
-- Maybe Later  
+Dependencies (boost given to tasks that unblock others)
 
----
+Multiple analysis strategies:
 
-## 📂 Project Structure
+Smart Balance
 
+Fastest Wins
 
+High Impact
+
+Deadline Driven
+
+Clear explanations for each score
+
+Strong validation + circular dependency detection
+
+Responsive and framework-free frontend
+
+🌟 Bonus Features (Per Assessment Requirements)
+
+📊 Date Intelligence Summary
+
+Overdue tasks
+
+Due today
+
+Upcoming tasks
+
+🔗 Dependency Graph Visualization
+
+Shows what each task depends on
+
+Shows which tasks are unblocked by others
+
+🟦 Eisenhower Matrix Visualization
+
+Urgent & Important → Do First
+
+Urgent & Less Important → Quick Wins
+
+Not Urgent & Important → Schedule
+
+Not Urgent & Less Important → Maybe Later
+
+📂 Project Structure
 task-analyzer/
 │
 ├── backend/
@@ -82,87 +98,74 @@ task-analyzer/
     ├── index.html
     ├── styles.css
     └── script.js
+
 ⚙️ Installation & Setup
-🖥 Backend Setup
-bash
-Copy code
+Backend
 cd backend
 python -m venv venv
+.\venv\Scripts\Activate.ps1   # Windows
+# source venv/bin/activate    # macOS/Linux
 
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-Backend runs at:
-📌 http://127.0.0.1:8000/
 
-🌐 Frontend Setup
-bash
-Copy code
+
+Backend runs at:
+http://127.0.0.1:8000/
+
+Frontend
 cd frontend
 python -m http.server 5500
-Open the app in your browser:
-📌 http://localhost:5500/index.html
+
+
+Open in browser:
+http://localhost:5500/index.html
 
 📡 API Endpoints
 Method	Endpoint	Description
-POST	/api/tasks/analyze/	Analyze and score a list of tasks
-GET	/api/tasks/suggest/	Suggest the top 3 tasks for today
+POST	/api/tasks/analyze/	Analyze and score tasks
+GET	/api/tasks/suggest/	Suggest top 3 tasks for today
 
 🧪 Running Tests
-bash
-Copy code
 cd backend
 python manage.py test
-Tests cover:
 
-Urgency vs importance trade-offs
+
+Covers:
+
+Urgency vs importance trade-off
 
 Dependency boost logic
 
 Circular dependency detection
 
 🧠 Scoring Strategy (Summary)
-Each task receives a 0–100 score, calculated from:
 
-1. Urgency
-Based on days left until deadline
+Each task receives a 0–100 score using:
 
-Overdue → max urgency
+Urgency → closer deadlines score higher
 
-Due today → very high urgency
+Importance → weighted impact factor
 
-2. Importance
-Input range 1–10
+Effort → small tasks get a quick-win boost
 
-Higher importance = higher weighted score
+Dependencies → tasks that unblock others get priority
 
-3. Effort
-Small tasks get a quick-win boost
-
-Very large tasks result in reduced score
-
-4. Dependencies
-Tasks that unblock others get a dependency priority boost
-
-Reverse dependency mapping determines how many tasks rely on each one
-
-Strategy Weight Differences
-Strategy	What It Favors
-Smart Balance	Mix of all factors (default)
-Fastest Wins	Low effort tasks
-High Impact	Importance (1–10 scale)
-Deadline Driven	Urgent tasks
+Strategies adjust the weight of each factor.
 
 🔮 Future Improvements
-Task CRUD system with database storage
 
-User authentication + sessions
+CRUD UI for storing tasks in the DB
 
-Advanced dependency graph visualization
+User accounts & sessions
 
-Export/import task sets
+More detailed dependency graph visualization
 
-Drag-and-drop task planner UI
+Export/import task datasets
+
+Drag-and-drop task dashboard
 
 📄 License
-This project was created as part of a Software Development Intern task and is free to use for learning and demonstration purposes.
+
+This project was created for an internship technical assessment and is free to use for learning purposes.
