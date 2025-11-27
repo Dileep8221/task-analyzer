@@ -88,8 +88,6 @@ bash
 Copy code
 cd backend
 python -m venv venv
-.\venv\Scripts\Activate.ps1   # Windows
-# source venv/bin/activate    # macOS/Linux
 
 pip install -r requirements.txt
 python manage.py migrate
