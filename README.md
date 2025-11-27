@@ -15,7 +15,7 @@
 ## 🚀 Overview
 
 Smart Task Analyzer is a full-stack application that helps users prioritize tasks using a balanced scoring algorithm.  
-It considers urgency, importance, effort, and task dependencies while offering multiple strategies for ranking.
+It evaluates each task based on urgency, importance, effort, and dependencies — and ranks them using different scoring strategies.
 
 This project was built as part of a Software Development Intern technical assessment.
 
@@ -24,77 +24,68 @@ This project was built as part of a Software Development Intern technical assess
 ## ✨ Features
 
 ### 🔹 Core Functionality
-
-- Add tasks one-by-one or via bulk JSON  
-- Weighted scoring system using:
-  - Urgency (deadlines)
+- Add tasks individually or via bulk JSON  
+- Weighted scoring based on:
+  - Urgency (deadline proximity)
   - Importance (1–10 scale)
   - Effort (estimated hours)
-  - Dependencies (boost given to tasks that unblock others)
-- Multiple analysis strategies:
-  - Smart Balance  
-  - Fastest Wins  
-  - High Impact  
-  - Deadline Driven  
-- Clear explanations for each score  
-- Strong validation + circular dependency detection  
-- Responsive and framework-free frontend  
+  - Dependencies (priority boost for tasks that unblock others)
+- Multiple strategies:
+  - **Smart Balance**
+  - **Fastest Wins**
+  - **High Impact**
+  - **Deadline Driven**
+- Explanations for every score  
+- Circular dependency detection  
+- Responsive frontend (HTML + CSS + JS)
 
 ---
 
-### 🌟 Bonus Features (Per Assessment Requirements)
-
+### 🌟 Bonus Features
 #### 📊 Date Intelligence Summary
 - Overdue tasks  
 - Due today  
 - Upcoming tasks  
 
 #### 🔗 Dependency Graph Visualization
-- Shows what each task depends on  
-- Shows which tasks are unblocked by others  
+- Reverse dependency mapping (tasks unblocked by others)
 
-#### 🟦 Eisenhower Matrix Visualization
-- Urgent & Important → **Do First**  
-- Urgent & Less Important → **Quick Wins**  
-- Not Urgent & Important → **Schedule**  
-- Not Urgent & Less Important → **Maybe Later**  
+#### 🟦 Eisenhower Matrix
+- Do First  
+- Quick Wins  
+- Schedule  
+- Maybe Later  
 
 ---
 
 ## 📂 Project Structure
 
+```text
 task-analyzer/
 │
 ├── backend/
-│ ├── manage.py
-│ ├── requirements.txt
-│ ├── task_analyzer/
-│ │ ├── settings.py
-│ │ ├── urls.py
-│ │ └── ...
-│ └── tasks/
-│ ├── models.py
-│ ├── serializers.py
-│ ├── scoring.py
-│ ├── views.py
-│ ├── urls.py
-│ └── tests.py
+│   ├── manage.py
+│   ├── requirements.txt
+│   ├── task_analyzer/
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── ...
+│   └── tasks/
+│       ├── models.py
+│       ├── serializers.py
+│       ├── scoring.py
+│       ├── views.py
+│       ├── urls.py
+│       └── tests.py
 │
 └── frontend/
-├── index.html
-├── styles.css
-└── script.js
-
-yaml
+    ├── index.html
+    ├── styles.css
+    └── script.js
+⚙️ Installation & Setup
+🖥 Backend Setup
+bash
 Copy code
-
----
-
-## ⚙️ Installation & Setup
-
-### **Backend**
-
-```bash
 cd backend
 python -m venv venv
 .\venv\Scripts\Activate.ps1   # Windows
@@ -104,20 +95,20 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 Backend runs at:
-http://127.0.0.1:8000/
+📌 http://127.0.0.1:8000/
 
-Frontend
+🌐 Frontend Setup
 bash
 Copy code
 cd frontend
 python -m http.server 5500
-Open in browser:
-http://localhost:5500/index.html
+Open the app in your browser:
+📌 http://localhost:5500/index.html
 
 📡 API Endpoints
 Method	Endpoint	Description
-POST	/api/tasks/analyze/	Analyze and score tasks
-GET	/api/tasks/suggest/	Suggest top 3 tasks for today
+POST	/api/tasks/analyze/	Analyze and score a list of tasks
+GET	/api/tasks/suggest/	Suggest the top 3 tasks for today
 
 🧪 Running Tests
 bash
@@ -126,35 +117,54 @@ cd backend
 python manage.py test
 Tests cover:
 
-Urgency vs importance trade-off
+Urgency vs importance trade-offs
 
 Dependency boost logic
 
 Circular dependency detection
 
 🧠 Scoring Strategy (Summary)
-Each task receives a 0–100 score using:
+Each task receives a 0–100 score, calculated from:
 
-Urgency → closer deadlines score higher
+1. Urgency
+Based on days left until deadline
 
-Importance → weighted impact factor
+Overdue → max urgency
 
-Effort → small tasks get a quick-win boost
+Due today → very high urgency
 
-Dependencies → tasks that unblock others get priority
+2. Importance
+Input range 1–10
 
-Different strategies adjust weights for each factor.
+Higher importance = higher weighted score
+
+3. Effort
+Small tasks get a quick-win boost
+
+Very large tasks result in reduced score
+
+4. Dependencies
+Tasks that unblock others get a dependency priority boost
+
+Reverse dependency mapping determines how many tasks rely on each one
+
+Strategy Weight Differences
+Strategy	What It Favors
+Smart Balance	Mix of all factors (default)
+Fastest Wins	Low effort tasks
+High Impact	Importance (1–10 scale)
+Deadline Driven	Urgent tasks
 
 🔮 Future Improvements
-CRUD UI for storing tasks in the DB
+Task CRUD system with database storage
 
-User accounts & sessions
+User authentication + sessions
 
-More detailed dependency graph visualization
+Advanced dependency graph visualization
 
-Export/import task datasets
+Export/import task sets
 
-Drag-and-drop task dashboard
+Drag-and-drop task planner UI
 
 📄 License
-This project was created for an internship technical assessment and is free to use for learning purposes.
+This project was created as part of a Software Development Intern task and is free to use for learning and demonstration purposes.
