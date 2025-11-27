@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.header {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background: #111827;
+  color: #f9fafb;
+}
+
+.header h1 {
+  margin: 0 0 0.5rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0 1rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.form-row {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select,
+textarea {
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.btn.primary {
+  background: #2563eb;
+  color: #f9fafb;
+}
+
+.btn.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.info-text {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.task-list li {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 0.4rem;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.result-card {
+  border-radius: 8px;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.result-title {
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.badge-high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.badge-medium {
+  background: #fffbeb;
+  color: #92400e;
+}
+
+.badge-low {
+  background: #e0f2fe;
+  color: #075985;
+}
+
+.result-meta {
+  font-size: 0.78rem;
+  color: #4b5563;
+  margin-top: 0.25rem;
+}
+
+.result-explanation {
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.error {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.error.hidden {
+  display: none;
+}
+
+.loading {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-left: 0.5rem;
+}
+
+.loading.hidden {
+  display: none;
+}
+
+.summary {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Dependency graph */
+
+#dependency-graph {
+  font-size: 0.85rem;
+}
+
+.dep-section-title {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.dep-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+}
+
+.dep-list li {
+  padding: 0.2rem 0;
+}
+
+/* Eisenhower matrix */
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.matrix-cell {
+  border-radius: 8px;
+  border: 1px dashed #d1d5db;
+  padding: 0.6rem 0.7rem;
+  background: #f9fafb;
+}
+
+.matrix-cell h3 {
+  font-size: 0.9rem;
+  margin: 0 0 0.3rem;
+}
+
+.matrix-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.matrix-list li {
+  padding: 0.15rem 0;
+}

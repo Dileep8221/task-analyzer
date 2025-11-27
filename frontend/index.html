@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Task Analyzer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Smart Task Analyzer</h1>
+    <p>Prioritize your tasks using urgency, importance, effort, and dependencies.</p>
+  </header>
+
+  <main class="container">
+    <!-- Add Single Task -->
+    <section class="card">
+      <h2>Add Single Task</h2>
+      <form id="task-form">
+        <div class="form-row">
+          <label for="title">Title *</label>
+          <input type="text" id="title" required />
+        </div>
+
+        <div class="form-row">
+          <label for="due_date">Due Date *</label>
+          <input type="date" id="due_date" required />
+        </div>
+
+        <div class="form-row">
+          <label for="estimated_hours">Estimated Hours *</label>
+          <input type="number" id="estimated_hours" min="0" step="0.5" required />
+        </div>
+
+        <div class="form-row">
+          <label for="importance">Importance (1–10) *</label>
+          <input type="number" id="importance" min="1" max="10" required />
+        </div>
+
+        <div class="form-row">
+          <label for="dependencies">Dependencies (IDs, comma-separated, optional)</label>
+          <input type="text" id="dependencies" placeholder="e.g. 1,2" />
+        </div>
+
+        <button type="submit" class="btn">Add Task to List</button>
+      </form>
+
+      <div class="info-text">
+        Each added task gets an internal ID (1, 2, 3...). Use these IDs in
+        the dependencies field to indicate which tasks must be done first.
+      </div>
+    </section>
+
+    <!-- Bulk JSON -->
+    <section class="card">
+      <h2>Bulk JSON Input</h2>
+      <p class="small">
+        Paste a JSON array of tasks here. Each task should have
+        <code>title</code>, <code>due_date</code>, <code>estimated_hours</code>,
+        <code>importance</code>, and optional <code>dependencies</code> and <code>id</code>.
+      </p>
+      <textarea id="bulk-json" rows="8" spellcheck="false"
+        placeholder='[{"id": "1", "title": "Task A", "due_date": "2025-01-01", "estimated_hours": 2, "importance": 8, "dependencies": []}]'></textarea>
+      <button id="load-json-btn" class="btn secondary">Replace Task List with JSON</button>
+    </section>
+
+    <!-- Analysis options -->
+    <section class="card">
+      <h2>Analysis Options</h2>
+      <div class="form-row">
+        <label for="strategy">Strategy</label>
+        <select id="strategy">
+          <option value="smart_balance">Smart Balance (recommended)</option>
+          <option value="fastest_wins">Fastest Wins</option>
+          <option value="high_impact">High Impact</option>
+          <option value="deadline_driven">Deadline Driven</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <button id="analyze-btn" class="btn primary">Analyze Tasks</button>
+        <span id="loading" class="loading hidden">Analyzing...</span>
+      </div>
+
+      <div id="error" class="error hidden"></div>
+
+      <div>
+        <h3>Current Task List</h3>
+        <ul id="task-list" class="task-list"></ul>
+      </div>
+    </section>
+
+    <!-- Analysis results -->
+    <section class="card">
+      <h2>Analysis Results</h2>
+      <div id="task-summary" class="summary"></div>
+      <div id="results" class="results"></div>
+    </section>
+
+    <!-- Dependency graph (BONUS 1) -->
+    <section class="card">
+      <h2>Dependency Graph</h2>
+      <p class="small">
+        Shows how tasks depend on each other and which tasks they unblock.
+        Circular dependencies are reported as errors in the analysis panel.
+      </p>
+      <div id="dependency-graph"></div>
+    </section>
+
+    <!-- Eisenhower matrix (BONUS 2) -->
+    <section class="card">
+      <h2>Eisenhower Matrix (Urgent vs Important)</h2>
+      <div class="matrix">
+        <div class="matrix-cell" id="matrix-urgent-important">
+          <h3>Do First (Urgent & Important)</h3>
+          <ul class="matrix-list"></ul>
+        </div>
+        <div class="matrix-cell" id="matrix-urgent-not-important">
+          <h3>Quick Wins (Urgent & Less Important)</h3>
+          <ul class="matrix-list"></ul>
+        </div>
+        <div class="matrix-cell" id="matrix-not-urgent-important">
+          <h3>Schedule (Not Urgent & Important)</h3>
+          <ul class="matrix-list"></ul>
+        </div>
+        <div class="matrix-cell" id="matrix-not-urgent-not-important">
+          <h3>Maybe Later (Not Urgent & Less Important)</h3>
+          <ul class="matrix-list"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built for Software Development Intern technical assessment.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
