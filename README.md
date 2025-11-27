@@ -60,7 +60,7 @@ This project was built as part of a Software Development Intern technical assess
 
 ## 📂 Project Structure
 
-```text
+
 task-analyzer/
 │
 ├── backend/
